@@ -1,0 +1,32 @@
+{
+	"extends": [
+		"neon/common",
+		"neon/browser",
+		"neon/typescript",
+		"neon/react",
+		"neon/prettier",
+		"plugin:tailwindcss/recommended"
+	],
+	"ignorePatterns": ["node_modules/*", "vite-env.d.ts"],
+	"parserOptions": {
+		"project": "./tsconfig.eslint.json"
+	},
+	"rules": {
+		"@typescript-eslint/consistent-type-definitions": [2, "interface"],
+		"default-case": 0,
+		"no-duplicate-imports": 2,
+		"no-warning-comments": 0,
+		"prefer-named-capture-group": 0,
+		"tailwindcss/no-custom-classname": 0,
+
+		"no-alert": 0,
+		"react/jsx-no-bind": 0,
+		"unicorn/consistent-function-scoping": 0,
+		"import/extensions": 0
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}
