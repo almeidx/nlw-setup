@@ -3,8 +3,8 @@
 
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import { API_URL } from "../utils/constants.js";
-import { generateDatesFromStartOfYear } from "../utils/generate-dates-from-start-of-year.js";
+import { API_URL } from "../utils/constants";
+import { generateDatesFromStartOfYear } from "../utils/generate-dates-from-start-of-year";
 import { HabitDay } from "./HabitDay";
 
 const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
@@ -41,18 +41,20 @@ export function SummaryTable() {
 			</div>
 
 			<div className="grid-rows-7 grid grid-flow-col gap-3">
-				{summaryDates.map((date) => {
-					const summaryItem = summary.find((day) => dayjs(date).isSame(day.date, "day"));
+				{summary.length > 0
+					? summaryDates.map((date) => {
+							const summaryItem = summary.find((day) => dayjs(date).isSame(day.date, "day"));
 
-					return (
-						<HabitDay
-							amount={summaryItem?.amount}
-							completed={summaryItem?.completed}
-							date={date}
-							key={date.toString()}
-						/>
-					);
-				})}
+							return (
+								<HabitDay
+									amount={summaryItem?.amount}
+									date={date}
+									defaultCompleted={summaryItem?.completed}
+									key={date.toString()}
+								/>
+							);
+					  })
+					: null}
 
 				{amountToFill > 0 &&
 					Array.from({ length: amountToFill }, (_, idx) => (

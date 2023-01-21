@@ -1,7 +1,7 @@
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { Check } from "phosphor-react";
 import { useState, type FormEvent } from "react";
-import { API_URL } from "../utils/constants.js";
+import { API_URL } from "../utils/constants";
 
 const availableWeekdays = [
 	"Domingo",
@@ -53,7 +53,7 @@ export function NewHabitForm() {
 
 			<input
 				autoFocus
-				className="mt-3 rounded-lg bg-zinc-800 p-4 placeholder:text-zinc-400	"
+				className="mt-3 rounded-lg bg-zinc-800 p-4 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-zinc-900"
 				id="title"
 				onChange={(event) => setTitle(event.target.value)}
 				placeholder="ex.: Exercícios, dormir bem, etc…"
@@ -69,11 +69,11 @@ export function NewHabitForm() {
 				{availableWeekdays.map((weekday, idx) => (
 					<Checkbox.Root
 						checked={weekdays.includes(idx)}
-						className="group flex items-center gap-3"
+						className="group flex items-center gap-3 focus:outline-none"
 						key={idx}
 						onCheckedChange={(checked) => handleWeekdayToggle(idx, Boolean(checked))}
 					>
-						<div className="flex h-8 w-8 items-center justify-center rounded-lg border-2 border-zinc-800 bg-zinc-900 group-data-[state=checked]:border-green-500 group-data-[state=checked]:bg-green-500">
+						<div className="flex h-8 w-8 items-center justify-center rounded-lg border-2 border-zinc-800 bg-zinc-900 transition-colors group-focus:ring-2 group-focus:ring-violet-600 group-focus:ring-offset-2 group-focus:ring-offset-zinc-900 group-data-[state=checked]:border-green-500 group-data-[state=checked]:bg-green-500">
 							<Checkbox.Indicator>
 								<Check className="text-white" size={20} />
 							</Checkbox.Indicator>
@@ -85,7 +85,7 @@ export function NewHabitForm() {
 			</div>
 
 			<button
-				className="mt-6 flex items-center justify-center gap-3 rounded-lg bg-green-600 p-4 font-semibold hover:bg-green-500"
+				className="mt-6 flex items-center justify-center gap-3 rounded-lg bg-green-600 p-4 font-semibold transition-colors hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-zinc-900"
 				type="submit"
 			>
 				<Check size={20} weight="bold" />
